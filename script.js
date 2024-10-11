@@ -25,7 +25,7 @@ function getUserChoice() {
 function playGame() {
   function playRound(user_inp, com_inp) {
     if (user_inp == com_inp) {
-      return "Tie!";
+      console.log("Tie!");
     }
     else {
       if (user_inp == "rock") {
