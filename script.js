@@ -15,4 +15,10 @@ function getUserChoice() {
   }
   return inp;
 }
+
+function determineWinner(com_inp, user_inp) {
+	if (user_inp == "rock") {
+
+	}
+}
 console.log(getComputerChoice());
