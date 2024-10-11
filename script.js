@@ -1,4 +1,6 @@
 let choices = ["rock", "paper", "scissors"];
+let human_score = 0;
+let computer_score = 0;
 
 function getComputerChoice() {
   let choice;
@@ -20,28 +22,28 @@ function getUserChoice() {
   return inp;
 }
 
-function determineWinner(user_inp, com_inp) {
+function playRound(user_inp, com_inp) {
   if (user_inp == com_inp) {
     return "Tie!";
   }
   else {
     if (user_inp == "rock") {
       if (com_inp == "scissors") {
-	return "You win!";
+	console.log("You win! Rock beats scissors.");
       } else {
-	return "Computer win!";
+	console.log("You lose! Paper beats rock.");
       }
     } else if (user_inp == "paper") {
       if (com_inp == "rock") {
-	return "You win!";
+	console.log("You win! Paper beats rock.");
       } else {
-	return "Computer win!";
+	console.log("You lose! Scissors beats paper.");
       }
     } else {
       if (com_inp == "paper") {
-	return "You win!";
+	console.log("You win! Scissors beats paper.");
       } else {
-	return "Computer win!";
+	console.log("You lose! Rock beats scissors.");
       }
     }
   }
