@@ -11,53 +11,72 @@ function getComputerChoice() {
 
 function getUserChoice() {
   let inp;
-  inp = prompt("What's your choice?\n(Rock, Paper, Scissors)");
+  const btns = document.querySelectorAll(".playerSelection");
 
-  inp.toLowerCase();
-  while (inp != "rock" && inp != "paper" && inp != "scissors") {
-    inp = prompt("Input the correct choice!");
-    inp.toLowerCase();
-  }
-  console.log(inp);
+  btns.forEach((btn) => btn.addEventListener('click', function() {
+    if (btn.textContent == "Scissors") {
+      inp = "scissors";
+    } else if (btn.textContent == "Rock") {
+      inp = "rock";
+    } else {
+      inp = "paper";
+    }
+  }));
   return inp;
 }
 
 function playGame() {
   function playRound(user_inp, com_inp) {
+    const div = document.querySelector("div");
     if (user_inp == com_inp) {
-      console.log("Tie!");
+      div.textContent = "Tie!";
     }
     else {
       if (user_inp == "rock") {
 	if (com_inp == "scissors") {
-	  console.log("You win! Rock beats scissors.");
+	  div.textContent = "You win! Rock beats scissors.";
 	  human_score++;
 	} else {
-	  console.log("You lose! Paper beats rock.");
+	  div.textContent = "You lose! Paper beats rock.";
 	  computer_score++;
 	}
       } else if (user_inp == "paper") {
 	if (com_inp == "rock") {
-	  console.log("You win! Paper beats rock.");
+	  div.textContent = "You win! Paper beats rock.";
 	  human_score++;
 	} else {
-	  console.log("You lose! Scissors beats paper.");
+	  div.textContent = "You lose! Scissors beats paper.";
 	  computer_score++;
 	}
       } else {
 	if (com_inp == "paper") {
-	  console.log("You win! Scissors beats paper.");
+	  div.textContent = "You win! Scissors beats paper.";
 	  human_score++;
 	} else {
-	  console.log("You lose! Rock beats scissors.");
+	  div.textContent = "You lose! Rock beats scissors.";
 	  computer_score++;
 	}
       }
+  }
+  if (human_score == 5 || computer_score == 5) {
+      if (computer_score == 5) {
+	alert("Computer Wins");
+      } else {
+	alert("You win!");
+      }
+  }
+}
+
+  const btns = document.querySelectorAll(".btn");
+  btns.forEach((btn) => btn.addEventListener('click', function() {
+    if (btn.textContent == "Rock") {
+      playRound("rock", getComputerChoice());
+    } else if (btn.textContent == "Paper") {
+      playRound("paper", getComputerChoice());
+    } else {
+      playRound("scissors", getComputerChoice());
     }
-  }
-  for (let i=1; i<=5; i++) {
-    playRound(getUserChoice(), getComputerChoice());
-  }
+  }))
   console.log("Your score: ", human_score);
   console.log("Computer's score: ", computer_score);
 }
